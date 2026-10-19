@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.logging.Logger;
 
@@ -40,6 +41,11 @@ public class PersonServices {
     public Person create(Person person) {
 
         logger.info("Creating on Person!!");
+
+        Optional<Person> savedPerson = repository.findByEmail(person.getEmail());
+        if (savedPerson.isPresent()) {
+            throw new ResourceNotFoundException("Person already exist with given e-mail!" + person.getEmail());
+        }
         return repository.save(person);
     }
 
