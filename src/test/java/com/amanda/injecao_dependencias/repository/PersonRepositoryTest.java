@@ -1,5 +1,6 @@
 package com.amanda.injecao_dependencias.repository;
 
+import com.amanda.injecao_dependencias.integrationtests.AbstractIntegrationTest;
 import com.amanda.injecao_dependencias.model.Person;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -7,6 +8,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.data.jpa.test.autoconfigure.DataJpaTest;
+import org.springframework.boot.jdbc.test.autoconfigure.AutoConfigureTestDatabase;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -17,7 +19,8 @@ import java.util.List;
 import java.util.Optional;
 
 @DataJpaTest
-public class PersonRepositoryTest {
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+public class PersonRepositoryTest extends AbstractIntegrationTest {
 
     @Autowired
     private PersonRepository repository;
