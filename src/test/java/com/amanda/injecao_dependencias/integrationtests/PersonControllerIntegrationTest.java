@@ -175,9 +175,10 @@ public class PersonControllerIntegrationTest extends AbstractIntegrationTest{
         Person anotherPerson = new Person(
                 "Gabriela",
                 "Rodriguez",
-                "gabi@erudio.com.br",
                 "Uberlândia - Minas Gerais - Brasil",
-                "Fem"
+                "Fem",
+                "gabi@erudio.com.br"
+
         );
 
         given().spec(specification)
